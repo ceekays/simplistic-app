@@ -36,22 +36,24 @@ public class MyListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.bundle_item, parent, false);
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        if (view == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            view = inflater.inflate(R.layout.contact_details, viewGroup, false);
         }
 
-        if (null != bundlesList) {
-            TextView lblBundleHeader = (TextView) convertView.findViewById(R.id.lblBundleHeader);
-            TextView lblBundleDetails = (TextView) convertView.findViewById(R.id.lblBundleDetails);
+        TextView iconTextView = (TextView) view.findViewById(R.id.iconTextView);
+        TextView contactNameTextView = (TextView) view.findViewById(R.id.contactNameTextView);
+        TextView phoneNumberTextView = (TextView) view.findViewById(R.id.phoneNumberTextView);
+        TextView genderTextView = (TextView) view.findViewById(R.id.genderTextView);
 
-            PrepaidBundle prepaidBundle = bundlesList[position];
-            lblBundleHeader.setText(prepaidBundle.getBundleName());
-            lblBundleDetails.setText(prepaidBundle.getBundleDescription());
-        }
+        String[] contact = (String[]) getItem(position);
 
-        return convertView;
+        iconTextView.setText(Integer.toString(position + 1));
+        contactNameTextView.setText(contact[0]);
+        phoneNumberTextView.setText(contact[1]);
+        genderTextView.setText(contact[2]);
+
+        return view;
     }
 }
