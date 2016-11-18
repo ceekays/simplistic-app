@@ -34,6 +34,6 @@ public class NamesActivity extends AppCompatActivity {
 
         firstListView = (ListView) findViewById(R.id.contactsListView);
 
-        firstListView.setAdapter(new MyListAdapter(getApplicationContext(), contacts));
+        firstListView.setAdapter(new MyListAdapter(NamesActivity.this, contacts));
     }
 }
