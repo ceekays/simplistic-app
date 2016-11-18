@@ -37,7 +37,7 @@ public class MyListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        if(view == null) {
+        if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.contact_details, viewGroup, false);
         }
@@ -45,12 +45,14 @@ public class MyListAdapter extends BaseAdapter {
         TextView iconTextView = (TextView) view.findViewById(R.id.iconTextView);
         TextView contactNameTextView = (TextView) view.findViewById(R.id.contactNameTextView);
         TextView phoneNumberTextView = (TextView) view.findViewById(R.id.phoneNumberTextView);
+        TextView genderTextView = (TextView) view.findViewById(R.id.genderTextView);
 
         String[] contact = (String[]) getItem(position);
 
-         iconTextView.setText(Integer.toString(position + 1));
+        iconTextView.setText(Integer.toString(position + 1));
         contactNameTextView.setText(contact[0]);
         phoneNumberTextView.setText(contact[1]);
+        genderTextView.setText(contact[2]);
 
         return view;
     }
