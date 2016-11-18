@@ -70,7 +70,7 @@ public class MyListAdapter extends BaseAdapter {
                         dialogInterface.dismiss();
                     }
                 });
-
+                alertDialog.show();
             }
         });
 
