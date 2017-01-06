@@ -8,27 +8,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-/**
- * Created by E.Kachale on 11/17/2016.
- */
+import java.util.List;
+
 
 public class MyListAdapter extends BaseAdapter {
     Context context;
-    String[][] contacts;
+    List<Profile> contacts;
 
-    public MyListAdapter(Context context, String[][] contacts) {
+    public MyListAdapter(Context context, List<Profile> contacts) {
         this.context = context;
         this.contacts = contacts;
     }
 
     @Override
     public int getCount() {
-        return this.contacts.length;
+        return this.contacts != null ? this.contacts.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return contacts[position];
+        return contacts != null ? contacts.get(position) : null;
     }
 
     @Override
@@ -48,12 +47,12 @@ public class MyListAdapter extends BaseAdapter {
         final TextView phoneNumberTextView = (TextView) view.findViewById(R.id.phoneNumberTextView);
         final TextView genderTextView = (TextView) view.findViewById(R.id.genderTextView);
 
-        final String[] contact = (String[]) getItem(position);
+        final Profile contact = (Profile) getItem(position);
 
         iconTextView.setText(Integer.toString(position + 1));
-        contactNameTextView.setText(contact[0]);
-        phoneNumberTextView.setText(contact[1]);
-        genderTextView.setText(contact[2]);
+        contactNameTextView.setText(contact.getName());
+        phoneNumberTextView.setText(contact.getPhoneNumber());
+        genderTextView.setText(contact.getGender());
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
